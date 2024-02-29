@@ -11,9 +11,9 @@ export default function ProfileIcon() {
 
         <div class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity ease-in-out duration-300">
             <div class="py-1">
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Profile</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Settings</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Sign out</a>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-accent-1 hover:text-gray-900">Profile</a>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-accent-1 hover:text-gray-900">Settings</a>
+            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-accent-1 hover:text-gray-900">Sign out</a>
             </div>
         </div>
         </div>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import ProfileIcon from "./components/profile_icon";
 import Search from "./components/search";
+import SearchFilters from "./components/search_filters/search_filters";
 export default function Home() {
   return (
     <main className="px-4 py-2 ">
@@ -29,8 +30,11 @@ export default function Home() {
       </div>
 
       {/* Search */}
-      <div className="flex flex-row justify-center">        
+      <div className="relative flex flex-row justify-center">        
         <Search/> 
+        <div className="absolute border " style={{ top: '100%' }}>
+          <SearchFilters/>
+        </div>
       </div>
       <hr></hr>
     </main>
