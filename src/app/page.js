@@ -4,7 +4,7 @@ import Search from "./components/search";
 export default function Home() {
   return (
     <main className="px-4 py-2 ">
-      <div className="container mx-auto flex items-center justify-between">
+      <div className="container mt-2 mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center">
           <Image
@@ -19,7 +19,8 @@ export default function Home() {
         
         {/* Navigation */}
         <nav className="space-x-4">
-          <a className="text-gray-700 hover:text-gray-900" href="#">Destinations</a>
+          <a className="text-gray-700 font-bold hover:text-gray-900" href="#">Destinations</a>
+          <span>&#183;</span>
           <a className="text-gray-700 hover:text-gray-900" href="#">Activities</a>  
         </nav>
 
@@ -28,9 +29,10 @@ export default function Home() {
       </div>
 
       {/* Search */}
-      <div className="container mx-auto mt-4">
+      <div className="flex flex-row justify-center">        
         <Search/> 
       </div>
+      <hr></hr>
     </main>
 
   );
