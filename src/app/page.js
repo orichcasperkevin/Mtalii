@@ -24,9 +24,11 @@ export default function Home() {
           <span>&#183;</span>
           <a className="text-gray-700 hover:text-gray-900" href="#">Activities</a>  
         </nav>
-
-        {/* Profile Icon */}
-        <ProfileIcon/>
+        <div>
+          <a href="#" className="p-4 text-blue-600">Become a host</a>
+          {/* Profile Icon */}        
+          <ProfileIcon/>
+        </div>      
       </div>
 
       {/* Search */}
