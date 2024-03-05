@@ -17,7 +17,6 @@ export default function ProfileIcon() {
           src="https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
           alt=""
         />
-          Casper
           <ChevronDownIcon className="-mr-1 h-5 w-5 text-gray-400" aria-hidden="true" />
         </Menu.Button>
       </div>
@@ -42,11 +41,10 @@ export default function ProfileIcon() {
                     'block px-4 py-2 text-sm'
                   )}
                 >
-                  Itenery
+                  Messages
                 </a>
               )}
-            </Menu.Item>
-            <hr/>
+            </Menu.Item>           
             <Menu.Item>
               {({ active }) => (
                 <a
@@ -56,7 +54,7 @@ export default function ProfileIcon() {
                     'block px-4 py-2 text-sm'
                   )}
                 >
-                  Account settings
+                  Notifications
                 </a>
               )}
             </Menu.Item>
@@ -69,10 +67,51 @@ export default function ProfileIcon() {
                     'block px-4 py-2 text-sm'
                   )}
                 >
-                  License
+                  Booking history
                 </a>
               )}
             </Menu.Item>
+            <hr></hr>
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  href="#"
+                  className={classNames(
+                    active ? 'bg-accent-1 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm'
+                  )}
+                >
+                  Account
+                </a>
+              )}
+            </Menu.Item>
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  href="#"
+                  className={classNames(
+                    active ? 'bg-accent-1 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm'
+                  )}
+                >
+                  Switch to services
+                </a>
+              )}
+            </Menu.Item>
+            <hr></hr>
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  href="#"
+                  className={classNames(
+                    active ? 'bg-accent-1 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm'
+                  )}
+                >
+                  Help center
+                </a>
+              )}
+            </Menu.Item>          
             <form method="POST" action="#">
               <Menu.Item>
                 {({ active }) => (
@@ -83,7 +122,7 @@ export default function ProfileIcon() {
                       'block w-full px-4 py-2 text-left text-sm'
                     )}
                   >
-                    Sign out
+                    Log out
                   </button>
                 )}
               </Menu.Item>
