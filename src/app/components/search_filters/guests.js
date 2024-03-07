@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const GuestInput = () => {
+const GuestInput = ({onValueChange}) => {
     const [adults, setAdults] = useState(0);
     const [children, setChildren] = useState(0);
     const [infants, setInfants] = useState(0);
@@ -14,6 +14,16 @@ const GuestInput = () => {
         setter((prevCount) => (prevCount > 0 ? prevCount - 1 : 0));
     };
 
+    useEffect(()=>{
+        onValueChange(
+            {
+                'adults':adults,
+                'children':children,
+                'infants':infants,
+                'pets':pets
+            }
+        )
+    },[adults,children,infants,pets])
     return (
         <div className="p-3 flex flex-col space-y-4">
             <div className="flex justify-between">

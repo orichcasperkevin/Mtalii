@@ -11,6 +11,8 @@ export default function Search(){
     endDate: null 
   }); 
   const [isGuestInputFocused, setIsGuestInputFocused] = useState(false);
+  const [guestInput,setGuestInput] = useState({})
+  const [guestInputDisplay,setGuestInputDisplay] = useState('')
   
   // Dummy list of locations for demonstration
   const allLocations = [
@@ -43,8 +45,7 @@ export default function Search(){
     setShowLocations(false); // Hide locations dropdown after selection
   };
 
-  const handleDatesChange = (newValue) => {
-    console.log("newValue:", newValue);
+  const handleDatesChange = (newValue) => {    
     setDates(newValue); 
   } 
 
@@ -56,6 +57,22 @@ export default function Search(){
   const handleOutsideGuestComponentClick = () => {
     setIsGuestInputFocused(false);
   };
+
+  const handleGuestValueChange = (newValue) => {
+    setGuestInput(newValue)
+  };
+
+  useEffect(()=>{
+      let formattedString = '';
+      for (const key in guestInput) {
+        if (guestInput[key] > 0) {
+          formattedString += `${guestInput[key]} ${key}, `;
+        }
+      }
+      // Remove trailing comma and space
+      formattedString = formattedString.replace(/, $/, '');
+      setGuestInputDisplay(formattedString)
+  },[guestInput,])
   return (
       <div class="flex items-center">
         <div class="grid min-h-[100px] w-full place-items-center overflow-x-scroll rounded-lg lg:overflow-visible">
@@ -101,13 +118,14 @@ export default function Search(){
             type="button">
             <div>
               Guests
-              <input type="text" className='p-1' placeholder="Who's coming?"
-               onFocus={handleGuestInputFocus} >                
-              </input>
+              <input type="text" className='p-1 text-gray-500' placeholder="Who's coming?"
+                value={guestInputDisplay}
+                onFocus={handleGuestInputFocus} >                
+              </input>              
               { isGuestInputFocused ?              
               <div className="absolute right-0 top-20 z-20 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <OutsideClickHandler onOutsideClick={handleOutsideGuestComponentClick}>
-                  <GuestInput/>
+                  <GuestInput onValueChange={handleGuestValueChange}/>
                 </OutsideClickHandler>                
               </div>
               : null }
