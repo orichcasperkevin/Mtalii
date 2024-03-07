@@ -3,13 +3,13 @@ import React, { useState,useRef } from 'react';
 import Image from "next/image";
 import ProfileIcon from "./components/profile_icon";
 import Search from "./components/search";
+import MiniSearch from './components/search_minimized';
 import SearchFilters from "./components/search_filters/search_filters";
 import CategoryFilter from './components/category_filter';
 import NavScrollBehavior from './components/nav_scroll_behavior';
 
 export default function Home() {
-  const [showFilters,setShowFilters] = useState(false)
-  const navRef = useRef(null);
+  const [showFilters,setShowFilters] = useState(false) 
   const [showNav,setShowNav] = useState(false)
   const cardItems = [
     {
@@ -122,12 +122,12 @@ export default function Home() {
                 width={50}
                 height={50}
                 priority
-              />
-              <nav className="space-x-4 p-3 ml-3">            
-                <a className="text-gray-700 font-bold hover:text-gray-900" href="#">Explore Destinations</a>            
-                <a className="text-gray-700 hover:text-gray-900" href="#">Itenary</a>  
-                <a className="text-gray-700 hover:text-gray-900" href="#">Bookings</a>  
-              </nav>
+              />                          
+                <nav className="space-x-4 p-3 ml-3">            
+                  <a className="text-gray-700 font-bold hover:text-gray-900" href="#">Explore Destinations</a>            
+                  <a className="text-gray-700 hover:text-gray-900" href="#">Itenary</a>  
+                  <a className="text-gray-700 hover:text-gray-900" href="#">Bookings</a>  
+                </nav>              
             </div>        
             <div className='space-x-4'>
               <a href="#" className="text-gray-600">Switch to services</a>
@@ -138,20 +138,23 @@ export default function Home() {
           {/* Search */}
           <div className="flex flex-row justify-center bg-white">     
             <div className='grid justify-items-center'>
-              <nav className="space-x-4 p-3 ml-3">            
-                <a className="text-gray-700 font-bold hover:text-gray-900" href="#">Accomodations</a>            
-                <span>&#x2022;</span>
-                <a className="text-gray-700 hover:text-gray-900" href="#">Activities</a> 
-                <span>&#x2022;</span> 
-                <a className="text-gray-700 hover:text-gray-900" href="#">Flights</a>  
-                <span>&#x2022;</span>
-                <a className="text-gray-700 hover:text-gray-900" href="#">Train</a>  
-                <span>&#x2022;</span>
-                <a className="text-gray-700 hover:text-gray-900" href="#">Cruise</a>              
-              </nav>  
+              { showNav ?
+                <nav className="space-x-4 p-3 ml-3">            
+                  <a className="text-gray-700 font-bold hover:text-gray-900" href="#">Accomodations</a>            
+                  <span>&#x2022;</span>
+                  <a className="text-gray-700 hover:text-gray-900" href="#">Activities</a> 
+                  <span>&#x2022;</span> 
+                  <a className="text-gray-700 hover:text-gray-900" href="#">Flights</a>  
+                  <span>&#x2022;</span>
+                  <a className="text-gray-700 hover:text-gray-900" href="#">Train</a>  
+                  <span>&#x2022;</span>
+                  <a className="text-gray-700 hover:text-gray-900" href="#">Cruise</a>              
+                </nav>  
+              :null}
             <div className='sticky top-0 flex flex-row'>
-              <Search/>
-              <div className='p-3'>
+              {showNav? <>
+                <Search/>
+                <div className='p-3'>
                 <button
                     onClick={(e)=>{e.preventDefault();setShowFilters(true)}}
                     class="flex flex-row mt-3 select-none font-sans text-center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-gray-900 rounded-full p-3 bg-gray-100 shadow-md shadow-gray-900/10 hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none"
@@ -161,6 +164,10 @@ export default function Home() {
                     </svg>              
                 </button>
               </div>
+              </>
+                :                
+                <MiniSearch className="p-3"/>
+              }          
             </div>                
             </div>          
             { showFilters ?
@@ -176,8 +183,7 @@ export default function Home() {
       <div className='mt-60'></div>
 
       <div className='flex flex-row'>
-        <CategoryFilter/>        
-        --{JSON.stringify(showNav)}--
+        <CategoryFilter/>                   
       </div>                    
       <section className="mt-3 flex flex-row justify-center">
         <div className="grid grid-cols-12 gap-2 gap-y-6 max-w-6xl">
