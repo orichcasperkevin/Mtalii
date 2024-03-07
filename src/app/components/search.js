@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import Datepicker from "react-tailwindcss-datepicker";
 import GuestInput from './search_filters/guests';
+import OutsideClickHandler from './outside_click';
 
 export default function Search(){
   const [showLocations, setShowLocations] = useState(false);
@@ -9,6 +10,7 @@ export default function Search(){
     startDate: null, 
     endDate: null 
   }); 
+  const [isGuestInputFocused, setIsGuestInputFocused] = useState(false);
   
   // Dummy list of locations for demonstration
   const allLocations = [
@@ -46,6 +48,14 @@ export default function Search(){
     setDates(newValue); 
   } 
 
+  // guest input
+  const handleGuestInputFocus = () => {
+    setIsGuestInputFocused(true);
+  };
+
+  const handleOutsideGuestComponentClick = () => {
+    setIsGuestInputFocused(false);
+  };
   return (
       <div class="flex items-center">
         <div class="grid min-h-[100px] w-full place-items-center overflow-x-scroll rounded-lg lg:overflow-visible">
@@ -91,11 +101,17 @@ export default function Search(){
             type="button">
             <div>
               Guests
-              <input type="text" className='p-1' placeholder="Who's coming?"></input>
+              <input type="text" className='p-1' placeholder="Who's coming?"
+               onFocus={handleGuestInputFocus} >                
+              </input>
+              { isGuestInputFocused ?              
               <div className="absolute right-0 top-20 z-20 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <GuestInput/>
+                <OutsideClickHandler onOutsideClick={handleOutsideGuestComponentClick}>
+                  <GuestInput/>
+                </OutsideClickHandler>                
               </div>
-            </div>   
+              : null }
+            </div>             
             <button className="ml-2 bg-accent-1 rounded-full p-2">                
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
