@@ -162,8 +162,8 @@ export default function Home() {
                   <a className="text-gray-700 hover:text-gray-900" href="#">Cruise</a>              
                 </nav>  
               :null}
-            <div className='sticky top-0 flex flex-row'>
-              {showNav? <>
+            <div className={`sticky top-0 flex flex-row ${showNav ? "" : "hidden"}`}>            
+              
                 <Search onData={onSearchDataChange}/>
                 <div className='p-3'>
                 <button
@@ -174,12 +174,13 @@ export default function Home() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
                     </svg>              
                 </button>
-              </div>
-              </>
-                :                
-                <MiniSearch searchData={searchData} className="p-3"/>                
-              }          
-            </div>                
+              </div>           
+            </div>  
+            { ! showNav ?
+              <MiniSearch searchData={searchData} className="p3"/>                
+              :
+              null
+            }
             </div>          
             { showFilters ?
               <div className="absolute border rounded-lg shadow-lg w-sreen" style={{ top: '100%' }}>

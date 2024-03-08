@@ -15,7 +15,7 @@ export default function MiniSearch({searchData}){
         <div class="flex w-full divide-x  row">
           {/* location */}
           <div
-            class="p-2 border relative grid font-bold transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs px-6 rounded-full shadow-md shadow-gray-900/10 focus:shadow-none active:opacity-[0.85] block w-full rounded-r-none border-r-0"
+            class="p-2 border text-nowrap relative grid font-bold transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs px-6 rounded-full shadow-md shadow-gray-900/10 focus:shadow-none active:opacity-[0.85] block w-full rounded-r-none border-r-0"
             type="button">
             <div className='p-2'>
               {location ?
@@ -27,7 +27,7 @@ export default function MiniSearch({searchData}){
           </div>
           {/* Dates */}
           <div
-            class="p-2 border grid font-bold transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs px-6 shadow-md shadow-gray-900/10 focus:shadow-none active:opacity-[0.85] block w-full rounded-r-none border-r-0"
+            class="p-2 border text-nowrap grid font-bold transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs px-6 shadow-md shadow-gray-900/10 focus:shadow-none active:opacity-[0.85] block w-full rounded-r-none border-r-0"
             type="button">
             <div className='p-2'>
               { startDate ?
