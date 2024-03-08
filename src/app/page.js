@@ -177,7 +177,7 @@ export default function Home() {
               </div>           
             </div>  
             { ! showNav ?
-              <MiniSearch searchData={searchData} className="p3"/>                
+              <MiniSearch searchData={searchData} onShowNav={onShowNav} className="p3"/>                
               :
               null
             }
@@ -188,14 +188,14 @@ export default function Home() {
               </div>
             : null }
           </div>
+          <div className='flex flex-row bg-white p-3'>
+            <CategoryFilter/>                   
+          </div>
           <hr></hr>
         </div>
       </NavScrollBehavior> 
       {/* spacer */}
-      <div className='mt-60'></div>           
-      <div className='flex flex-row'>
-        <CategoryFilter/>                   
-      </div>                    
+      <div className='mt-60'></div>                               
       <section className="mt-3 flex flex-row justify-center">
         <div className="grid grid-cols-12 gap-2 gap-y-6 max-w-6xl">
           {cardItems.map((item) => (

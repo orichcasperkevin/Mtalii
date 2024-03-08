@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function MiniSearch({searchData}){
+export default function MiniSearch({searchData,onShowNav}){
     // Set default values for searchData if it's empty
     const { location = "Anywhere", guests = {}, dates = { startDate: null, endDate: null } } = searchData;
 
@@ -18,8 +18,9 @@ export default function MiniSearch({searchData}){
         <div class="flex w-full divide-x  row">
           {/* location */}
           <div
-            class="p-2 border text-nowrap relative grid font-bold transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs px-6 rounded-full shadow-md shadow-gray-900/10 focus:shadow-none active:opacity-[0.85] block w-full rounded-r-none border-r-0"
-            type="button">
+            class="p-2 border cursor-pointer text-nowrap relative grid font-bold transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs px-6 rounded-full shadow-md shadow-gray-900/10 focus:shadow-none active:opacity-[0.85] block w-full rounded-r-none border-r-0"
+            type="button"
+            onClick={()=>{onShowNav(true)}}>
             <div className='p-2'>
               {location ?
               <>{location}</>
@@ -30,8 +31,9 @@ export default function MiniSearch({searchData}){
           </div>
           {/* Dates */}
           <div
-            class="p-2 border text-nowrap grid font-bold transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs px-6 shadow-md shadow-gray-900/10 focus:shadow-none active:opacity-[0.85] block w-full rounded-r-none border-r-0"
-            type="button">
+            class="p-2 border cursor-pointer text-nowrap grid font-bold transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs px-6 shadow-md shadow-gray-900/10 focus:shadow-none active:opacity-[0.85] block w-full rounded-r-none border-r-0"
+            type="button"
+            onClick={()=>{onShowNav(true)}}>
             <div className='p-2'>
               { startDate ?
               <>{formattedStartDate} --- {formattedEndDate}</>
@@ -42,8 +44,9 @@ export default function MiniSearch({searchData}){
             </div>              
           </div>      
           {/* Guests     */}
-          <div class="p-2 flex flex-row text-nowrap border font-bold transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs px-6 shadow-md shadow-gray-900/10 focus:shadow-none active:opacity-[0.85] w-full rounded-full rounded-l-none border-r-0"
-            type="button">
+          <div class="p-2 flex flex-row text-nowrap border cursor-pointer font-bold transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs px-6 shadow-md shadow-gray-900/10 focus:shadow-none active:opacity-[0.85] w-full rounded-full rounded-l-none border-r-0"
+            type="button"
+            onClick={()=>{onShowNav(true)}}>
             <div className='p-2'>
               {totalGuests} guests        
             </div>        

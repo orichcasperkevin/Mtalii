@@ -2,7 +2,7 @@ import React from 'react';
 
 const CategoryFilter = () => {
   return (
-    <div className="mt-3 flex flex-col justify-items-start">     
+    <div className="flex flex-col justify-items-start">     
       <div className="flex overflow-x-scroll hide-scroll-bar">
         <ul className="flex flex-nowrap">         
             <li class="inline-block px-3">                
