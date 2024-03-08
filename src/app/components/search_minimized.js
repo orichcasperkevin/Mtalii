@@ -8,6 +8,9 @@ export default function MiniSearch({searchData}){
     const totalGuests = Object.values(guests).reduce((total, count) => total + count, 0);
 
     const { startDate = null, endDate = null } = dates;
+    const formattedStartDate = startDate ? new Date(startDate).toLocaleDateString() : null;
+    const formattedEndDate = endDate ? new Date(endDate).toLocaleDateString() : null;
+
  
   return (
       <div class="flex items-center">
@@ -31,7 +34,7 @@ export default function MiniSearch({searchData}){
             type="button">
             <div className='p-2'>
               { startDate ?
-              <>{startDate} to {endDate}</>
+              <>{formattedStartDate} --- {formattedEndDate}</>
               :
               <>Any day</>
               }
