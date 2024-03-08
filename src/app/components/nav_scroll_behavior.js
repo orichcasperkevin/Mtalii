@@ -5,11 +5,15 @@ const NavScrollBehavior = ({ children,onShowNav }) => {
     let previousPosition = 0
     const [showNav,setShowNav] = useState(true)
     const handleScroll = () => {
-        const currentPosition = window.scrollY    
+        const currentPosition = window.scrollY         
         if (currentPosition > previousPosition){
-            setShowNav(false)
+            if ((currentPosition - previousPosition) > 20){
+                setShowNav(false)
+            }            
         }else{
-            setShowNav(true)
+            if ((previousPosition-currentPosition) > 20){
+                setShowNav(true)
+            }           
         }
         previousPosition = currentPosition;              
     };

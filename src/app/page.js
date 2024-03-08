@@ -11,6 +11,14 @@ import NavScrollBehavior from './components/nav_scroll_behavior';
 export default function Home() {
   const [showFilters,setShowFilters] = useState(false) 
   const [showNav,setShowNav] = useState(false)
+  const [searchData,setSearchData] = useState({
+    location:"Anywhere", 
+    guests:{}, 
+    dates:{ 
+      startDate: null, 
+      endDate: null 
+    } 
+  })
   const cardItems = [
     {
         id: 1,
@@ -109,10 +117,13 @@ export default function Home() {
   const onShowNav=(value)=>{
     setShowNav(value)
   }
+  const onSearchDataChange=(value)=>{
+    setSearchData(value)
+  }
   return (
     <main>  
       <NavScrollBehavior onShowNav={onShowNav}>   
-        <div>
+        <div className='bg-white'>
           <div className="p-3 flex justify-between bg-gray-200">
             {/* Logo */}
             <div className="flex items-center">
@@ -136,7 +147,7 @@ export default function Home() {
             </div>      
           </div>      
           {/* Search */}
-          <div className="flex flex-row justify-center bg-white">     
+          <div className="mt-0 flex flex-row justify-center bg-white">     
             <div className='grid justify-items-center'>
               { showNav ?
                 <nav className="space-x-4 p-3 ml-3">            
@@ -153,7 +164,7 @@ export default function Home() {
               :null}
             <div className='sticky top-0 flex flex-row'>
               {showNav? <>
-                <Search/>
+                <Search onData={onSearchDataChange}/>
                 <div className='p-3'>
                 <button
                     onClick={(e)=>{e.preventDefault();setShowFilters(true)}}
@@ -166,7 +177,7 @@ export default function Home() {
               </div>
               </>
                 :                
-                <MiniSearch className="p-3"/>
+                <MiniSearch searchData={searchData} className="p-3"/>                
               }          
             </div>                
             </div>          
@@ -180,8 +191,7 @@ export default function Home() {
         </div>
       </NavScrollBehavior> 
       {/* spacer */}
-      <div className='mt-60'></div>
-
+      <div className='mt-60'></div>           
       <div className='flex flex-row'>
         <CategoryFilter/>                   
       </div>                    

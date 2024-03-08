@@ -3,7 +3,7 @@ import Datepicker from "react-tailwindcss-datepicker";
 import GuestInput from './search_filters/guests';
 import OutsideClickHandler from './outside_click';
 
-export default function Search(){
+export default function Search({onData}){
   const [showLocations, setShowLocations] = useState(false);
   const [locationSearch, setLocationSearch] = useState('');
   const [dates, setDates] = useState({ 
@@ -73,6 +73,16 @@ export default function Search(){
       formattedString = formattedString.replace(/, $/, '');
       setGuestInputDisplay(formattedString)
   },[guestInput,])
+
+  //emit to parent whwen data changes
+  useEffect(()=>{
+    onData({
+      "location":locationSearch,
+      "guests":guestInput,
+      "dates":dates
+    }
+    )
+  },[dates,guestInput,locationSearch])
   return (
       <div class="flex items-center">
         <div class="grid min-h-[100px] w-full place-items-center overflow-x-scroll rounded-lg lg:overflow-visible">
