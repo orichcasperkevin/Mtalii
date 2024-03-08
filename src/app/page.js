@@ -1,5 +1,6 @@
 "use client"
-import React, { useState,useRef } from 'react';
+import React, { useState } from 'react';
+import Link from 'next/link'
 import Image from "next/image";
 import ProfileIcon from "./components/profile_icon";
 import Search from "./components/search";
@@ -141,7 +142,7 @@ export default function Home() {
                 </nav>              
             </div>        
             <div className='space-x-4'>
-              <a href="#" className="text-gray-600">Switch to services</a>
+              <Link href="/services" className="text-gray-600">Switch to services</Link>
               {/* Profile Icon */}        
               <ProfileIcon/>
             </div>      
@@ -195,7 +196,7 @@ export default function Home() {
         </div>
       </NavScrollBehavior> 
       {/* spacer */}
-      <div className='mt-60'></div>                               
+      <div className='mt-80'></div>                               
       <section className="mt-3 flex flex-row justify-center">
         <div className="grid grid-cols-12 gap-2 gap-y-6 max-w-6xl">
           {cardItems.map((item) => (
