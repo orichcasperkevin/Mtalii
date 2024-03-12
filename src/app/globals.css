@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.timeline {
+    position: relative;    
+    margin: 0 auto;
+  }
+  
+  .progress-bar {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 10px;    
+  }
+  
+  .time-points {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-top: 20px;
+  }
+  
+  .time-point {
+    position: absolute;    
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+  }
+  

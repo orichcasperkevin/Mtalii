@@ -39,21 +39,21 @@ function ClickCounter() {
                 </div>      
             </div> 
         </nav>
-        <div className='container mx-auto'>
-            <nav className="space-x-4 p-3 ml-3">            
+        <div className='container  mx-auto mt-3'>
+            <nav className="flex justify-center space-x-4 p-3 ml-3">            
                 <a className={`cursor-pointer ${activeTab === 'Accomodations' ? 'font-bold' : 'text-gray-700 hover:text-gray-900'}`} 
                 onClick={() => handleTabClick('Accomodations')}>
-                    Accomodations
+                    Accomodations <span>(24)</span>
                 </a>            
                   <span>&#x2022;</span>
                 <a className={`cursor-pointer ${activeTab === 'Activities' ? 'font-bold' : 'text-gray-700 hover:text-gray-900'}`}
                 onClick={() => handleTabClick('Activities')}>
-                    Activities
+                    Activities <span>(0)</span>
                 </a>                    
                   <span>&#x2022;</span>
                 <a className={`cursor-pointer ${activeTab === 'Transfers' ? 'font-bold' : 'text-gray-700 hover:text-gray-900'}`}
                 onClick={() => handleTabClick('Transfers')}>
-                    Ground transfers
+                    Ground transfers <span>(0)</span>
                 </a>                               
             </nav>  
             <div className='p-3'>
