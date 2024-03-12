@@ -27,8 +27,8 @@ function Timeline({timePoints,onUpdateProgress}){
 
 
     useEffect(()=>{
-        onUpdateProgress(progress)
-    },[progress])
+        onUpdateProgress(activeTimePoint)
+    },[activeTimePoint])
     return <>
     <div className="timeline">
       {/* Progress Bar */}

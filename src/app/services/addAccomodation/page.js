@@ -1,10 +1,19 @@
 'use client'
-import React from 'react';
+import React, { useState } from 'react';
 import Timeline from './components/timeline';
+import BasicInfo from './components/basicInfo';
+import Description from './components/description';
+import Publish from './components/publish';
+
+const BASIC_INFO_TAB = "basic info"
+const DESCRIPTION_TAB = "description"
+const PUBLISH_TAB = 'publish'
 
 function AddAccomodation() {
+  const [activeTab,setActiveTab] = useState(BASIC_INFO_TAB
+    )
   const onUpdateProgress=(newValue)=>{
-    console.log(newValue)
+    setActiveTab(newValue)
   }
   return (
     <div className='p-8'>
@@ -14,13 +23,21 @@ function AddAccomodation() {
           </svg>
         </div>
         <div className='flex justify-center'>
-        <div className='p-3 w-96'>
-          <Timeline className=""
-            timePoints={['basicInfo','describe','Publish']}
-            onUpdateProgress={onUpdateProgress}
-          />
-        </div> 
-        </div>       
+          <div className='p-3 w-96'>
+            <Timeline className=""
+              timePoints={[BASIC_INFO_TAB,DESCRIPTION_TAB,PUBLISH_TAB]}
+              onUpdateProgress={onUpdateProgress}
+            />
+          </div> 
+        </div>     
+        {/* Content   */}
+        <hr className='mt-20'/>
+        <div>
+          {/* Render content based on active tab */}
+          {activeTab === BASIC_INFO_TAB && <BasicInfo/>}
+          {activeTab === DESCRIPTION_TAB && <Description />}
+          {activeTab === PUBLISH_TAB && <Publish />}
+        </div>        
     </div>
   );
 }
