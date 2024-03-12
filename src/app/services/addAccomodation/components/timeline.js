@@ -1,14 +1,15 @@
 'use client'
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import "@/app/globals.css"
 
 function Timeline({timePoints,onUpdateProgress}){
     const [progress, setProgress] = useState(0); // Initial progress value
+    const [activeTimePoint,setActiveTimePoint] = useState(timePoints[0])
 
     // Function to update progress
     const updateProgress = (newValue) => {
-      setProgress(newValue);
+      setProgress(newValue)    
     };
 
     const getProgressPercentage = (timePoint) => {
@@ -23,9 +24,13 @@ function Timeline({timePoints,onUpdateProgress}){
             return (indexOfTimePoint / lengthOfTimePoints) * 100;
         }
     };
-    
+
+
+    useEffect(()=>{
+        onUpdateProgress(progress)
+    },[progress])
     return <>
-<div className="timeline">
+    <div className="timeline">
       {/* Progress Bar */}
       <div
         className="progress-bar bg-accent-1 h-20 rounded-full"
@@ -38,10 +43,13 @@ function Timeline({timePoints,onUpdateProgress}){
             return<>
             <div
                 className="time-point"
-                onClick={() => updateProgress(getProgressPercentage(timePoint))}
+                onClick={() =>{ 
+                        updateProgress(getProgressPercentage(timePoint));
+                        setActiveTimePoint(timePoint) 
+                }}
                 style={{ left: `${getProgressPercentage(timePoint)}%` }}>
-                    <div className="grid rounded-full bg-white p-3">
-                        <div className="justify-self-center bg-white rounded-full border h-6 w-6 border-4"></div>
+                    <div className="grid bg-white p-3">
+                        <div className={`justify-self-center bg-white rounded-full border h-6 w-6 border-4 ${activeTimePoint == timePoint ? "border-accent-1":""}`}></div>
                         <span>{timePoint}</span>                         
                     </div>       
             </div>
