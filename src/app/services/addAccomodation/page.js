@@ -7,11 +7,13 @@ import AddPhotos from './components/photos';
 
 const BASIC_INFO_TAB = "basic info"
 const AMENITIES_TAB = "amenities"
-const PHOTOS_TAB = "add photos"
+const PHOTOS_TAB = "photos"
 
 function AddAccomodation() {
-  const [activeTab,setActiveTab] = useState(BASIC_INFO_TAB
-    )
+  const [activeTab,setActiveTab] = useState(BASIC_INFO_TAB)
+  const tabsArray = [BASIC_INFO_TAB,AMENITIES_TAB,PHOTOS_TAB]
+
+
   const onUpdateProgress=(newValue)=>{
     setActiveTab(newValue)
   }
@@ -24,14 +26,14 @@ function AddAccomodation() {
         </div>
         <div className='flex justify-center'>
           <div className='p-3 w-96'>
-            <Timeline className=""
-              timePoints={[BASIC_INFO_TAB,AMENITIES_TAB,PHOTOS_TAB]}
-              onUpdateProgress={onUpdateProgress}
-            />
+            <Timeline className=""              
+              timePoints={tabsArray}
+              onUpdateProgress={onUpdateProgress}              
+            />            
           </div> 
         </div>     
-        {/* Content   */}
-        <hr className='mt-20'/>
+        {/* Content   */}    
+        <hr/>
         <div>
           {/* Render content based on active tab */}
           {activeTab === BASIC_INFO_TAB && <BasicInfo/>}

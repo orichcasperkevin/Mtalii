@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import GoogleMap from '@/app/components/googleMap';
 
 function BasicInfo(){
+    const [adults, setAdults] = useState(0);
+    const [children, setChildren] = useState(0);
+    const [infants, setInfants] = useState(0);
+    const [pets, setPets] = useState(0);
+
+    const handleIncrement = (setter) => {
+        setter((prevCount) => prevCount + 1);
+    };
+
+    const handleDecrement = (setter) => {
+        setter((prevCount) => (prevCount > 0 ? prevCount - 1 : 0));
+    };
+
     return<>
                 <div className=''>
             <div className='grid grid-cols-6'>
@@ -67,6 +80,56 @@ function BasicInfo(){
                         </li>
                     </ul>
                   </div>
+                  <div className="p-3 flex flex-col space-y-4">
+                  <div className="flex justify-between">
+                      <span className="p-2 grid">No of Guests:</span>                      
+                      <div>
+                          <button onClick={() => handleDecrement(setAdults)}  className="bg-accent-1 p-2 rounded-full">
+                              -
+                          </button>
+                          <input type="number" className="input-field w-12 text-center" value={adults} readOnly />
+                          <button onClick={() => handleIncrement(setAdults)} className="bg-accent-1 p-2 rounded-full">
+                              +
+                          </button>
+                      </div>
+                  </div>
+                  <div className="flex justify-between">
+                      <span className="p-2">Bedrooms:</span>
+                      <div>
+                          <button onClick={() => handleDecrement(setChildren)}  className="bg-accent-1 p-2 rounded-full">
+                              -
+                          </button>
+                          <input type="number" className="input-field w-12 text-center" value={children} readOnly />
+                          <button onClick={() => handleIncrement(setChildren)}  className="bg-accent-1 p-2 rounded-full">
+                              +
+                          </button>
+                      </div>
+                  </div>
+                  <div className="flex justify-between">
+                      <span className="p-2">Batchromms :</span>
+                      <div>
+                          <button onClick={() => handleDecrement(setInfants)}  className="bg-accent-1 p-2 rounded-full">
+                              -
+                          </button>
+                          <input type="number" className="input-field w-12 text-center" value={infants} readOnly />
+                          <button onClick={() => handleIncrement(setInfants)}  className="bg-accent-1 p-2 rounded-full">
+                              +
+                          </button>
+                      </div>
+                  </div>
+                  <div className="flex justify-between">
+                      <span className="p-2">Kitchens:</span>
+                      <div>
+                          <button onClick={() => handleDecrement(setPets)}  className="bg-accent-1 p-2 rounded-full">
+                              -
+                          </button>
+                          <input type="number" className="input-field w-12 text-center" value={pets} readOnly />
+                          <button onClick={() => handleIncrement(setPets)}  className="bg-accent-1 p-2 rounded-full">
+                              +
+                          </button>
+                      </div>
+                  </div>
+              </div>
                   <div className=''>
                       <div class="grid grid-cols-2 gap-2 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                         <div>
