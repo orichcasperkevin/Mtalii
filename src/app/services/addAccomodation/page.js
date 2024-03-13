@@ -2,12 +2,12 @@
 import React, { useState } from 'react';
 import Timeline from './components/timeline';
 import BasicInfo from './components/basicInfo';
-import Description from './components/description';
-import Publish from './components/publish';
+import Amenities from './components/amenities';
+import AddPhotos from './components/photos';
 
 const BASIC_INFO_TAB = "basic info"
-const DESCRIPTION_TAB = "description"
-const PUBLISH_TAB = 'publish'
+const AMENITIES_TAB = "amenities"
+const PHOTOS_TAB = "add photos"
 
 function AddAccomodation() {
   const [activeTab,setActiveTab] = useState(BASIC_INFO_TAB
@@ -25,7 +25,7 @@ function AddAccomodation() {
         <div className='flex justify-center'>
           <div className='p-3 w-96'>
             <Timeline className=""
-              timePoints={[BASIC_INFO_TAB,DESCRIPTION_TAB,PUBLISH_TAB]}
+              timePoints={[BASIC_INFO_TAB,AMENITIES_TAB,PHOTOS_TAB]}
               onUpdateProgress={onUpdateProgress}
             />
           </div> 
@@ -35,8 +35,9 @@ function AddAccomodation() {
         <div>
           {/* Render content based on active tab */}
           {activeTab === BASIC_INFO_TAB && <BasicInfo/>}
-          {activeTab === DESCRIPTION_TAB && <Description />}
-          {activeTab === PUBLISH_TAB && <Publish />}
+          {activeTab === AMENITIES_TAB && <Amenities/>}
+          {activeTab === PHOTOS_TAB && <AddPhotos />}
+          {/* {activeTab === PUBLISH_TAB && <Publish />} */}
         </div>        
     </div>
   );

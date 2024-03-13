@@ -1,6 +1,6 @@
 import React from "react";
 
-function Description(){
+function Amenities(){
     const amenities = [
         { name: 'Television', icon: 'tv' },
         { name: 'Wifi', icon: 'wifi' },
@@ -68,4 +68,4 @@ function Description(){
         </div>
     </>
 }
-export default Description
+export default Amenities

@@ -34,17 +34,18 @@ const ImageUploader = () => {
         htmlFor="image-upload"
         className="cursor-pointer bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-md"
       >
-        Upload Image(s)
+        Choose Image(s)
       </label>
-      <div className="mt-4 flex space-x-4 overflow-x-auto">
+      <div className="mt-4 flex space-x-4 overflow-x-scroll w-full max-w-3xl">
         {images.map((imageUrl, index) => (
           <div key={index} className="relative">
             <img src={imageUrl} alt={`Uploaded ${index}`} className="max-w-xs max-h-96" />
             <button
               onClick={() => removeImage(index)}
-              className="absolute top-0 right-0 bg-red-500 text-white rounded-full p-1"
-            >
-              X
+              className="absolute top-0 right-0 bg-red-600 text-white rounded-full p-1">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
             </button>
           </div>
         ))}
