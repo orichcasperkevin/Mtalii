@@ -5,11 +5,11 @@ import AccomodationFilters from './components/accomodation_filters';
 function Activities() {
   const cardItems = [
     {
-        id: 1,
-        imageSrc: 'https://picsum.photos/seed/59/300/200',       
-        title: 'Mountain pass',
-        channelName: 'awesome cabin within the mountains of south Nairobi',
-        price: '$241 / night',
+      id: 3,
+      imageSrc: 'https://picsum.photos/seed/22/300/200',       
+      title: 'City stay',
+      channelName: 'Experience the heartbeat of the city.',
+      price: '$877 / experience',
     },
     {
         id: 2,
@@ -19,12 +19,13 @@ function Activities() {
         price: '$230 / night',
     },
     {
-        id: 3,
-        imageSrc: 'https://picsum.photos/seed/22/300/200',       
-        title: 'City stay',
-        channelName: 'Experience the heartbeat of the city.',
-        price: '$877 / experience',
+      id: 1,
+      imageSrc: 'https://picsum.photos/seed/59/300/200',       
+      title: 'Mountain pass',
+      channelName: 'awesome cabin within the mountains of south Nairobi',
+      price: '$241 / night',
     },
+
   ]
   return (
     <div>
