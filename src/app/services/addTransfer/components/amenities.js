@@ -2,24 +2,28 @@ import React from "react";
 
 function Amenities(){
     const amenities = [
-        { name: 'Television', icon: 'tv' },
-        { name: 'Wifi', icon: 'wifi' },
-        { name: 'Free Parking', icon: 'car' },
-        { name: 'Paid Parking', icon: 'car' },
-        { name: 'Dedicated Workspace', icon: 'briefcase' },                 
+        { name: 'Leather seats', icon: 'tv' },
+        { name: 'Sun roof', icon: 'wifi' },
+        { name: 'Stereo', icon: 'car' },
+        { name: 'Cup holders', icon: 'car' },
+        { name: 'Rear armrest', icon: 'briefcase' },                 
+        { name: 'Privacy shades', icon: 'briefcase' },
+        { name: 'Ambient lighting', icon: 'tv' },
+        { name: 'Massage seats', icon: 'wifi' },
+        { name: 'Heated seats', icon: 'car' },
+        { name: 'Glove box', icon: 'car' },
+        { name: 'Blootooth', icon: 'briefcase' },                 
+        { name: 'Mobile connectivity', icon: 'briefcase' },
     ];
-    const kitchenAppliances = [
-        { name: 'Microwave', icon: 'microwave' },
-        { name: 'Refrigerator', icon: 'fridge' },
-        { name: 'Cutlery', icon: 'utensils' },
+    const SafetyItems = [
+        { name: 'Collision warning', icon: 'microwave' },
+        { name: 'Parking sensors', icon: 'fridge' },
+        { name: 'Fire extinguisher', icon: 'utensils' },
+        { name: 'Airbags', icon: 'utensils' },
     ];
-    const otherAmenities = [
-        { name: 'Pool Table', icon: 'billiards' },
-        { name: 'Hot Tub', icon: 'hot-tub' },
-        { name: 'Piano', icon: 'music' },
-        { name: 'Outdoor showers', icon: 'shower' },
-        { name: 'BBQ Grills', icon: 'grill' },
-        { name: 'Gym', icon: 'dumbbell' },
+    const Accessibility = [
+        { name: 'Wheelchair access', icon: 'billiards' },
+        { name: 'Child seat', icon: 'hot-tub' },
     ]
     return<>
         <div>   
@@ -39,9 +43,9 @@ function Amenities(){
             </div> 
             {/* Kitchen */}
             <div className="p-3">
-                <label className="p-3">Kitchen aplliances</label>
+                <label className="p-3">Safety features</label>
                 <ul className="mt-3 flex flex-wrap">        
-                    {kitchenAppliances.map((appliance, index) => (
+                    {SafetyItems.map((appliance, index) => (
                         <li key={index} className="inline-block p-2">
                         <a href="#" className="inline-block flex flex-row px-4 py-3 rounded-full hover:text-gray-900 bg-gray-200 hover:bg-accent-1">
                         
@@ -53,9 +57,9 @@ function Amenities(){
             </div>  
             {/* Others */}
             <div className="p-3">
-                <label className="p-3">Other ammenities</label>
+                <label className="p-3">Accesibility</label>
                 <ul className="mt-3 flex flex-wrap">        
-                    {otherAmenities.map((ammenity, index) => (
+                    {Accessibility.map((ammenity, index) => (
                         <li key={index} className="inline-block p-2">
                         <a href="#" className="inline-block flex flex-row px-4 py-3 rounded-full hover:text-gray-900 bg-gray-200 hover:bg-accent-1">
                         
