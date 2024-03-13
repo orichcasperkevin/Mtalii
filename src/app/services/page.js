@@ -7,9 +7,10 @@ import Activities from './Activities';
 import GroundTransfers from './transfer';
 import Image from 'next/image';
 import NavScrollBehavior from '../components/nav_scroll_behavior';
-function ClickCounter() {
-    const [activeTab, setActiveTab] = useState('Accomodations');
 
+function ClickCounter() {
+    const [activeTab, setActiveTab] = useState('Accomodations');    
+    const queryParams = new URLSearchParams(window.location.search);
     const handleTabClick = (tabName) => {
       setActiveTab(tabName);
   };

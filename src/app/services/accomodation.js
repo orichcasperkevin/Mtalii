@@ -141,7 +141,7 @@ function Accomodations() {
               </div>      
           ))}
         </div>     
-      </section>
+        </section>
     </div>
   );
 }
