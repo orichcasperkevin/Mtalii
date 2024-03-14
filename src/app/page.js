@@ -1,6 +1,7 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link'
+import { useRouter } from 'next/navigation';
 import Image from "next/image";
 import ProfileIcon from "./components/profile_icon";
 import Search from "./components/search";
@@ -10,6 +11,7 @@ import CategoryFilter from './components/category_filter';
 import NavScrollBehavior from './components/nav_scroll_behavior';
 
 export default function Home() {
+  const router = useRouter();
   const [showFilters,setShowFilters] = useState(false) 
   const [showNav,setShowNav] = useState(false)
   const [searchData,setSearchData] = useState({
@@ -52,14 +54,14 @@ export default function Home() {
     {
       id: 1,
       imageSrc: 'https://picsum.photos/seed/59/300/200',       
-      title: 'Mountain pass',
+      title: 'Mountain pass 2',
       channelName: 'awesome cabin within the mountains of south Nairobi',
       price: '$241 / night',
   },
   {
       id: 2,
       imageSrc: 'https://picsum.photos/seed/60/300/200',        
-      title: 'Forest hill resort',
+      title: 'Forest hill resort new',
       channelName: 'Candid resort in the depths of resjru forest',
       price: '$230 / night',
   },
@@ -201,7 +203,8 @@ export default function Home() {
         <div className="grid grid-cols-12 gap-2 gap-y-6 max-w-6xl">
           {cardItems.map((item) => (
               <div key={item.id} className="col-span-12 sm:col-span-6 md:col-span-3">
-                <card className="w-full flex flex-col">
+                <card className="w-full flex flex-col" 
+                  onClick={()=>{router.push(`/listing/${item.title}`)}}>
                     <div>
                         {/* Image Video */}
                         <a href="#">
