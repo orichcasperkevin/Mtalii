@@ -33,7 +33,7 @@ const NavScrollBehavior = ({ children,onShowNav }) => {
 
 
   return (
-    <nav className={`transition-all ease-in-out ${showNav ? 'fixed top-0 left-0 right-0' : 'fixed -top-20 left-0 right-0'}`}>        
+    <nav className={`transition-all ease-in-out ${showNav ? 'fixed z-50 top-0 left-0 right-0' : 'fixed z-50 -top-20 left-0 right-0'}`}>        
       {children}
     </nav>
   );
