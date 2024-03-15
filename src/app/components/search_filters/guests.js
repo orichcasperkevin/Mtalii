@@ -23,6 +23,7 @@ const GuestInput = ({onValueChange}) => {
                 'pets':pets
             }
         )
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[adults,children,infants,pets])
     return (
         <div className="p-3 flex flex-col space-y-4">

@@ -8,9 +8,9 @@ import GroundTransfers from './transfer';
 import Image from 'next/image';
 import NavScrollBehavior from '../components/nav_scroll_behavior';
 import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 
-
-function ClickCounter() {
+function Nav() {
     const [activeTab, setActiveTab] = useState('Accomodations');           
     const searchParams = useSearchParams()   
     
@@ -30,7 +30,7 @@ function ClickCounter() {
         }
     },[])
     return (
-        <section>
+        <>        
             <NavScrollBehavior onShowNav={()=>{;}}>
                 <nav>
                     <div className="p-3 flex justify-between bg-gray-200">
@@ -81,9 +81,16 @@ function ClickCounter() {
                 {activeTab === 'Accomodations' && <Accomodations />}
                 {activeTab === 'Activities' && <Activities />}
                 {activeTab === 'Transfers' && <GroundTransfers />}
-            </div>
-        </section>
+            </div>      
+        </>
     );
 }
 
-export default ClickCounter;
+export function services() {
+    return (
+      // You could have a loading skeleton as the `fallback` too
+      <Suspense>
+        <Nav />
+      </Suspense>
+    )
+}

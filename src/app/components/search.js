@@ -72,6 +72,7 @@ export default function Search({onData}){
       // Remove trailing comma and space
       formattedString = formattedString.replace(/, $/, '');
       setGuestInputDisplay(formattedString)
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   },[guestInput,])
 
   //emit to parent whwen data changes
@@ -82,6 +83,7 @@ export default function Search({onData}){
       "dates":dates
     }
     )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[dates,guestInput,locationSearch])
   return (
       <div class="flex items-center">

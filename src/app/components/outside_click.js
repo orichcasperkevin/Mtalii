@@ -14,6 +14,7 @@ const OutsideClickHandler = ({ children, onOutsideClick }) => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <div ref={ref}>{children}</div>;

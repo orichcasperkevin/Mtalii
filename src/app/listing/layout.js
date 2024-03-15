@@ -69,16 +69,11 @@ export default function ListingLayout({children}) {
                     </div>           
                     </div>  
                     { showNav & ! showFullNav ?
-                    <MiniSearch searchData={searchData} onShowNav={onShowNavFromMinisearch} className="p3"/>                
-                    :
-                    null
+                        <MiniSearch searchData={searchData} onShowNav={onShowNavFromMinisearch} className="p3"/>                
+                        :
+                        null
                     }
-                    </div>          
-                    { showFilters ?
-                    <div className="absolute border rounded-lg shadow-lg w-sreen" style={{ top: '100%' }}>
-                        <SearchFilters/>
-                    </div>
-                    : null }
+                    </div>             
                 </div>                  
             </div>
         </NavScrollBehavior> 

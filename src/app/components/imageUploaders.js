@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 const ImageUploader = () => {
   const [images, setImages] = useState([]);
@@ -39,7 +40,7 @@ const ImageUploader = () => {
       <div className="mt-4 flex space-x-4 overflow-x-scroll w-full max-w-3xl">
         {images.map((imageUrl, index) => (
           <div key={index} className="relative">
-            <img src={imageUrl} alt={`Uploaded ${index}`} className="max-w-xs max-h-96" />
+            <Image src={imageUrl} alt={`Uploaded ${index}`} width={500} height={500} className="max-w-xs max-h-96" />
             <button
               onClick={() => removeImage(index)}
               className="absolute top-0 right-0 bg-red-600 text-white rounded-full p-1">

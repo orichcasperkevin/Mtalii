@@ -20,6 +20,7 @@ const NavScrollBehavior = ({ children,onShowNav }) => {
     
     useEffect(()=>{
         onShowNav(showNav)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[showNav])
 
     useEffect(() => {
@@ -28,6 +29,7 @@ const NavScrollBehavior = ({ children,onShowNav }) => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
 
