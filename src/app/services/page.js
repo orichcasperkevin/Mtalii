@@ -86,7 +86,7 @@ function Nav() {
     );
 }
 
-export function services() {
+export default function services() {
     return (
       // You could have a loading skeleton as the `fallback` too
       <Suspense>

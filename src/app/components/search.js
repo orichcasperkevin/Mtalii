@@ -86,12 +86,12 @@ export default function Search({onData}){
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[dates,guestInput,locationSearch])
   return (
-      <div class="flex items-center">
-        <div class="grid min-h-[100px] w-full place-items-center overflow-x-scroll rounded-lg lg:overflow-visible">
-        <div class="flex w-full divide-x  row">
+      <div className="flex items-center">
+        <div className="grid min-h-[100px] w-full place-items-center overflow-x-scroll rounded-lg lg:overflow-visible">
+        <div className="flex w-full divide-x  row">
           {/* location */}
           <div
-            class="border relative grid font-bold transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-full shadow-md shadow-gray-900/10 focus:shadow-none active:opacity-[0.85] block w-full rounded-r-none border-r-0"
+            className="border relative grid font-bold transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 px-6 rounded-full shadow-md shadow-gray-900/10 focus:shadow-none active:opacity-[0.85] block w-full rounded-r-none border-r-0"
             type="button">
             Location  
               <input className="p-1 border-none text-gray-500" type="text" placeholder="Where to?"

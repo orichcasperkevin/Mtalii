@@ -13,12 +13,12 @@ export default function MiniSearch({searchData,onShowNav}){
 
  
   return (
-      <div class="flex items-center">
-        <div class="p-2 min-h-[50px] w-full place-items-center overflow-x-scroll rounded-lg lg:overflow-visible">
-        <div class="flex w-full divide-x  row">
+      <div className="flex items-center">
+        <div className="p-2 min-h-[50px] w-full place-items-center overflow-x-scroll rounded-lg lg:overflow-visible">
+        <div className="flex w-full divide-x  row">
           {/* location */}
           <div
-            class="p-2 border cursor-pointer text-nowrap relative grid font-bold transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs px-6 rounded-full shadow-md shadow-gray-900/10 focus:shadow-none active:opacity-[0.85] block w-full rounded-r-none border-r-0"
+            className="p-2 border cursor-pointer text-nowrap relative grid font-bold transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs px-6 rounded-full shadow-md shadow-gray-900/10 focus:shadow-none active:opacity-[0.85] block w-full rounded-r-none border-r-0"
             type="button"
             onClick={()=>{onShowNav(true)}}>
             <div className='p-2'>
@@ -31,7 +31,7 @@ export default function MiniSearch({searchData,onShowNav}){
           </div>
           {/* Dates */}
           <div
-            class="p-2 border cursor-pointer text-nowrap grid font-bold transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs px-6 shadow-md shadow-gray-900/10 focus:shadow-none active:opacity-[0.85] block w-full rounded-r-none border-r-0"
+            className="p-2 border cursor-pointer text-nowrap grid font-bold transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs px-6 shadow-md shadow-gray-900/10 focus:shadow-none active:opacity-[0.85] block w-full rounded-r-none border-r-0"
             type="button"
             onClick={()=>{onShowNav(true)}}>
             <div className='p-2'>
@@ -44,7 +44,7 @@ export default function MiniSearch({searchData,onShowNav}){
             </div>              
           </div>      
           {/* Guests     */}
-          <div class="p-2 flex flex-row text-nowrap border cursor-pointer font-bold transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs px-6 shadow-md shadow-gray-900/10 focus:shadow-none active:opacity-[0.85] w-full rounded-full rounded-l-none border-r-0"
+          <div clasName="p-2 flex flex-row text-nowrap border cursor-pointer font-bold transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs px-6 shadow-md shadow-gray-900/10 focus:shadow-none active:opacity-[0.85] w-full rounded-full rounded-l-none border-r-0"
             type="button"
             onClick={()=>{onShowNav(true)}}>
             <div className='p-2'>
