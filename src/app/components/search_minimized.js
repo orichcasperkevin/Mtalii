@@ -44,7 +44,7 @@ export default function MiniSearch({searchData,onShowNav}){
             </div>              
           </div>      
           {/* Guests     */}
-          <div clasName="p-2 flex flex-row text-nowrap border cursor-pointer font-bold transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs px-6 shadow-md shadow-gray-900/10 focus:shadow-none active:opacity-[0.85] w-full rounded-full rounded-l-none border-r-0"
+          <div className="p-2 flex flex-row text-nowrap border cursor-pointer font-bold transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs px-6 shadow-md shadow-gray-900/10 focus:shadow-none active:opacity-[0.85] w-full rounded-full rounded-l-none border-r-0"
             type="button"
             onClick={()=>{onShowNav(true)}}>
             <div className='p-2'>
