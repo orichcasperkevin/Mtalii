@@ -1,12 +1,21 @@
 "use client"
 import React from "react"
 import Image from "next/image"
+import Link from "next/link"
 import Pricing from "../pricing"
 import Reviews from "../reviews"
 
 export default function Listing({ params }) {
     return <>
         <section className="">
+        <div className='flex justify-start px-10'>
+            <Link href="/?tab=activities" className="z-50 p-2 flex border rounded-full hover:bg-gray-200">                
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+                </svg>
+                <span className="ml-2">Back home</span>
+            </Link>
+            </div>
             <div className="container mx-auto px-2 py-4">
                 <h1 className="text-4xl font-bold">{params.slug.replace(/%20/g, " ")}</h1>
             </div>            

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Search from "../components/search";
 import MiniSearch from "../components/search_minimized";
 import NavScrollBehavior from "../components/nav_scroll_behavior";
-
+import Image from "next/image";
 export default function ListingLayout({children}) {
     const [showFilters,setShowFilters] = useState(false) 
     const [showNav,setShowNav] = useState(false)
@@ -38,8 +38,8 @@ export default function ListingLayout({children}) {
         {/* Include shared UI here e.g. a header or sidebar */}
         <NavScrollBehavior onShowNav={onShowNav}>   
             <div className='bg-white'>                   
-                {/* Search */}
-                <div className="mt-0 flex flex-row justify-center bg-white">     
+                {/* Search */}               
+                <div className="mt-0 flex flex-row justify-center bg-white">                      
                     <div className='grid justify-items-center'>
                     { showFullNav ?
                         <nav className="space-x-4 p-3 ml-3">            
