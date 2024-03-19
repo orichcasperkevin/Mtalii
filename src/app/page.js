@@ -11,6 +11,7 @@ import CategoryFilter from './components/category_filter';
 import NavScrollBehavior from './components/nav_scroll_behavior';
 import Modal from './components/modal';
 import Login from './components/login';
+import Signup from './components/signup';
 
 
 export default function Home() {
@@ -255,7 +256,7 @@ export default function Home() {
             <Login/>
         </Modal>
         <Modal isOpen={showSignUp} onClose={()=>setShowSignup(false)} title="Sign Up">
-          Sign Up
+          <Signup/>
         </Modal>
       </section>
     </main>
