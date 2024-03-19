@@ -9,6 +9,7 @@ import MiniSearch from './components/search_minimized';
 import SearchFilters from "./components/search_filters/search_filters";
 import CategoryFilter from './components/category_filter';
 import NavScrollBehavior from './components/nav_scroll_behavior';
+import Modal from './components/modal';
 
 export default function Home() {
   const router = useRouter();
@@ -198,7 +199,7 @@ export default function Home() {
         </div>
       </NavScrollBehavior> 
       {/* spacer */}
-      <div className='mt-80'></div>                               
+      <div className='mt-80'></div>                                     
       <section className="mt-3 flex flex-row justify-center">
         <div className="grid grid-cols-12 gap-2 gap-y-6 max-w-6xl">
           {cardItems.map((item) => (
@@ -237,7 +238,12 @@ export default function Home() {
           ))}
         </div>     
       </section>
-      
+      {/* Modal */}
+      <section>
+        <Modal isOpen={true} onClose={()=>{;}} title="Sign Up">
+            modal content
+        </Modal>
+      </section>
     </main>
 
   );
