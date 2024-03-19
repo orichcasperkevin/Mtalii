@@ -1,12 +1,16 @@
-import React, { useState } from "react";
-
-const Modal = ({ isOpen, onClose, title, children }) => {
+import React, { useState,useEffect } from "react";
+const emptyFunction =()=>{;}
+const Modal = ({ isOpen, onClose=emptyFunction, title, children }) => {
   const [modalOpen, setModalOpen] = useState(isOpen);
-
+  
   const closeModal = () => {
     setModalOpen(false);
     onClose();
   };
+
+  useEffect(() => {
+    setModalOpen(isOpen);
+  }, [isOpen]);
 
   return (
     <>

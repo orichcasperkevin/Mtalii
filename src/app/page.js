@@ -15,6 +15,7 @@ export default function Home() {
   const router = useRouter();
   const [showFilters,setShowFilters] = useState(false) 
   const [showNav,setShowNav] = useState(false)
+  const [showLogin,setShowLogin] = useState(true)
   const [searchData,setSearchData] = useState({
     location:"Anywhere", 
     guests:{}, 
@@ -124,6 +125,11 @@ export default function Home() {
   const onSearchDataChange=(value)=>{
     setSearchData(value)
   }
+  const onShowLogin=()=>{
+    console.log("showing login")
+    setShowLogin(true)
+  }
+
   return (
     <main>  
       <NavScrollBehavior onShowNav={onShowNav}>   
@@ -147,7 +153,7 @@ export default function Home() {
             <div className='space-x-4'>
               <Link href="/services" className="text-gray-600">Switch to services</Link>
               {/* Profile Icon */}        
-              <ProfileIcon/>
+              <ProfileIcon onShowLogin={onShowLogin}/>
             </div>      
           </div>      
           {/* Search */}
@@ -240,7 +246,7 @@ export default function Home() {
       </section>
       {/* Modal */}
       <section>
-        <Modal isOpen={true} onClose={()=>{;}} title="Sign Up">
+        <Modal isOpen={showLogin} onClose={()=>{setShowLogin(false)}} title="Sign Up">
             modal content
         </Modal>
       </section>

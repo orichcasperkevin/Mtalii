@@ -1,4 +1,5 @@
 "use client"
+import React from 'react'
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
@@ -6,8 +7,11 @@ import Image from 'next/image'
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
-
-export default function ProfileIcon() {
+const emptyFunction=()=>{;}
+const ProfileIcon=({onShowLogin=emptyFunction })=>{
+  const onLoginClicked=()=>{     
+    onShowLogin()
+  }
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -33,6 +37,33 @@ export default function ProfileIcon() {
       >
         <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
+          <Menu.Item>
+              {({ active }) => (
+                <a
+                  onClick={onLoginClicked}
+                  className={classNames(
+                    active ? 'bg-accent-1 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm'
+                  )}
+                >
+                  Login
+                </a>
+              )}
+            </Menu.Item> 
+            <Menu.Item>
+              {({ active }) => (
+                <a
+                  href="#"
+                  className={classNames(
+                    active ? 'bg-accent-1 text-gray-900' : 'text-gray-700',
+                    'block px-4 py-2 text-sm'
+                  )}
+                >
+                  Sign up
+                </a>
+              )}
+            </Menu.Item> 
+            <hr></hr>
             <Menu.Item>
               {({ active }) => (
                 <a
@@ -134,3 +165,4 @@ export default function ProfileIcon() {
     </Menu>
   )
 }
+export default ProfileIcon
