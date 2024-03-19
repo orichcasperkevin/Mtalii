@@ -17,7 +17,7 @@ const Modal = ({ isOpen, onClose=emptyFunction, title, children }) => {
       {modalOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="fixed inset-0 bg-gray-900 bg-opacity-50"></div>
-          <div className="relative bg-white rounded-lg w-96 p-6">
+          <div className="relative bg-white rounded-lg w-100 p-6">
             <div className="flex justify-between ">
               <h3 className="font-bold">{title}</h3>              
               <button
@@ -38,8 +38,10 @@ const Modal = ({ isOpen, onClose=emptyFunction, title, children }) => {
                 </svg>
               </button>
             </div>   
-            <hr className="mb-3"></hr>         
-            {children}
+            <hr className="mb-3"></hr>   
+            <div className="h-100 overflow-y-auto max-h-96">
+              {children}
+            </div>                 
           </div>
         </div>
       )}

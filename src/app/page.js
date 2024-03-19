@@ -10,12 +10,13 @@ import SearchFilters from "./components/search_filters/search_filters";
 import CategoryFilter from './components/category_filter';
 import NavScrollBehavior from './components/nav_scroll_behavior';
 import Modal from './components/modal';
+import Login from './components/login';
 
 export default function Home() {
   const router = useRouter();
   const [showFilters,setShowFilters] = useState(false) 
   const [showNav,setShowNav] = useState(false)
-  const [showLogin,setShowLogin] = useState(true)
+  const [showLogin,setShowLogin] = useState(false)
   const [searchData,setSearchData] = useState({
     location:"Anywhere", 
     guests:{}, 
@@ -125,8 +126,7 @@ export default function Home() {
   const onSearchDataChange=(value)=>{
     setSearchData(value)
   }
-  const onShowLogin=()=>{
-    console.log("showing login")
+  const onShowLogin=()=>{    
     setShowLogin(true)
   }
 
@@ -246,8 +246,8 @@ export default function Home() {
       </section>
       {/* Modal */}
       <section>
-        <Modal isOpen={showLogin} onClose={()=>{setShowLogin(false)}} title="Sign Up">
-            modal content
+        <Modal isOpen={showLogin} onClose={()=>{setShowLogin(false)}} title="Login">
+            <Login/>
         </Modal>
       </section>
     </main>
