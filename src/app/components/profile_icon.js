@@ -8,9 +8,15 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 const emptyFunction=()=>{;}
-const ProfileIcon=({onShowLogin=emptyFunction })=>{
+const ProfileIcon=({ 
+    onShowLogin=emptyFunction,
+    onShowSignup=emptyFunction
+  })=>{
   const onLoginClicked=()=>{     
     onShowLogin()
+  }
+  const onSignupClicked=()=>{
+    onShowSignup()
   }
   return (
     <Menu as="div" className="relative inline-block text-left">
@@ -53,7 +59,7 @@ const ProfileIcon=({onShowLogin=emptyFunction })=>{
             <Menu.Item>
               {({ active }) => (
                 <a
-                  href="#"
+                  onClick={onSignupClicked}
                   className={classNames(
                     active ? 'bg-accent-1 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm'

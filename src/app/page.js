@@ -12,11 +12,13 @@ import NavScrollBehavior from './components/nav_scroll_behavior';
 import Modal from './components/modal';
 import Login from './components/login';
 
+
 export default function Home() {
   const router = useRouter();
   const [showFilters,setShowFilters] = useState(false) 
   const [showNav,setShowNav] = useState(false)
   const [showLogin,setShowLogin] = useState(false)
+  const [showSignUp,setShowSignup] = useState(false)
   const [searchData,setSearchData] = useState({
     location:"Anywhere", 
     guests:{}, 
@@ -129,6 +131,9 @@ export default function Home() {
   const onShowLogin=()=>{    
     setShowLogin(true)
   }
+  const onShowSignup=()=>{
+    setShowSignup(true)
+  }
 
   return (
     <main>  
@@ -153,7 +158,7 @@ export default function Home() {
             <div className='space-x-4'>
               <Link href="/services" className="text-gray-600">Switch to services</Link>
               {/* Profile Icon */}        
-              <ProfileIcon onShowLogin={onShowLogin}/>
+              <ProfileIcon onShowLogin={onShowLogin} onShowSignup={onShowSignup}/>
             </div>      
           </div>      
           {/* Search */}
@@ -248,6 +253,9 @@ export default function Home() {
       <section>
         <Modal isOpen={showLogin} onClose={()=>{setShowLogin(false)}} title="Login">
             <Login/>
+        </Modal>
+        <Modal isOpen={showSignUp} onClose={()=>setShowSignup(false)} title="Sign Up">
+          Sign Up
         </Modal>
       </section>
     </main>
