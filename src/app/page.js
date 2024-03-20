@@ -15,6 +15,7 @@ import Accomodations from './components/accomodations';
 import Activies from './components/activities';
 import ActivityFilters from './components/activity_filters';
 import FlightCards from './components/flights';
+import FlightFilters from './components/flight_filters';
 const ACCOMODATIONS_TAB = 1,
       ACTIVITIES_TAB = 2,
       FLIGHTS_TAB = 3,
@@ -139,6 +140,9 @@ export default function Home() {
             :null}     
             {activeTab == ACTIVITIES_TAB ?
               <ActivityFilters/>              
+            :null}
+            {activeTab == FLIGHTS_TAB ?
+              <FlightFilters/>              
             :null}
           </div>
           <hr></hr>
