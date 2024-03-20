@@ -13,6 +13,7 @@ import Login from './components/login';
 import Signup from './components/signup';
 import Accomodations from './components/accomodations';
 import Activies from './components/activities';
+import ActivityFilters from './components/activity_filters';
 const ACCOMODATIONS_TAB = 1,
       ACTIVITIES_TAB = 2,
       FLIGHTS_TAB = 3,
@@ -132,7 +133,12 @@ export default function Home() {
             : null }
           </div>
           <div className='flex flex-row bg-white p-3'>
-            <CategoryFilter/>                   
+            {activeTab == ACCOMODATIONS_TAB ?
+              <CategoryFilter/>              
+            :null}     
+            {activeTab == ACTIVITIES_TAB ?
+              <ActivityFilters/>              
+            :null}
           </div>
           <hr></hr>
         </div>
@@ -140,6 +146,7 @@ export default function Home() {
       {/* spacer */}
       <div className='mt-80'></div>  
 
+      {/* ACCOMODATIONS */}
       {activeTab == ACCOMODATIONS_TAB ?
       <section className="mt-3 flex flex-row justify-center">
           <Accomodations/>
