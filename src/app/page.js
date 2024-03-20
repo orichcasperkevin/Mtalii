@@ -12,6 +12,7 @@ import Modal from './components/modal';
 import Login from './components/login';
 import Signup from './components/signup';
 import Accomodations from './components/accomodations';
+import Activies from './components/activities';
 const ACCOMODATIONS_TAB = 1,
       ACTIVITIES_TAB = 2,
       FLIGHTS_TAB = 3,
@@ -139,9 +140,17 @@ export default function Home() {
       {/* spacer */}
       <div className='mt-80'></div>  
 
+      {activeTab == ACCOMODATIONS_TAB ?
       <section className="mt-3 flex flex-row justify-center">
-            <Accomodations/>
+          <Accomodations/>
       </section>
+      :null}
+      {/* ACTIVITIES */}
+      {activeTab == ACTIVITIES_TAB ?
+      <section className="mt-3 flex flex-row justify-center">
+          <Activies/>
+      </section>
+      :null}
       {/* Modal */}
       <section>
         <Modal isOpen={showLogin} onClose={()=>{setShowLogin(false)}} title="Login">
