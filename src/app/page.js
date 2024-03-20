@@ -14,6 +14,7 @@ import Signup from './components/signup';
 import Accomodations from './components/accomodations';
 import Activies from './components/activities';
 import ActivityFilters from './components/activity_filters';
+import FlightCards from './components/flights';
 const ACCOMODATIONS_TAB = 1,
       ACTIVITIES_TAB = 2,
       FLIGHTS_TAB = 3,
@@ -93,7 +94,7 @@ export default function Home() {
                     Activities
                   </a> 
                   <span>&#x2022;</span> 
-                  <a className="text-gray-700 hover:text-gray-900"
+                  <a className={`cursor-pointer text-gray-700 hover:text-gray-900 ${activeTab === FLIGHTS_TAB ? 'font-bold' : ''}`} 
                   onClick={()=>{switchTab(FLIGHTS_TAB)}}>
                     Flights</a>  
                   <span>&#x2022;</span>
@@ -158,6 +159,13 @@ export default function Home() {
           <Activies/>
       </section>
       :null}
+      {/* FLIGHTS */}
+      {activeTab == FLIGHTS_TAB ?
+      <section className="mt-3 flex flex-row justify-center">
+          <FlightCards/>
+      </section>
+      :null}
+
       {/* Modal */}
       <section>
         <Modal isOpen={showLogin} onClose={()=>{setShowLogin(false)}} title="Login">
