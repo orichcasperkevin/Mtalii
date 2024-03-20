@@ -18,9 +18,9 @@ import FlightCards from './components/flights';
 import FlightFilters from './components/flight_filters';
 const ACCOMODATIONS_TAB = 1,
       ACTIVITIES_TAB = 2,
-      FLIGHTS_TAB = 3,
-      TRAINS_TABS = 4,
-      CRUISE_TAB = 5;
+      FLIGHTS_TAB = 3;
+      // TRAINS_TABS = 4,
+      // CRUISE_TAB = 5;
 
 
 export default function Home() {  
@@ -70,7 +70,7 @@ export default function Home() {
               />                          
                 <nav className="space-x-4 p-3 ml-3">            
                   <a className="text-gray-700 font-bold hover:text-gray-900" href="#">Explore Destinations</a>            
-                  <a className="text-gray-700 hover:text-gray-900" href="#">Itenary</a>  
+                  <Link className="text-gray-700 hover:text-gray-900" href="/itenary">Itenary</Link>  
                   <a className="text-gray-700 hover:text-gray-900" href="#">Bookings</a>  
                 </nav>              
             </div>        
@@ -98,14 +98,14 @@ export default function Home() {
                   <a className={`cursor-pointer text-gray-700 hover:text-gray-900 ${activeTab === FLIGHTS_TAB ? 'font-bold' : ''}`} 
                   onClick={()=>{switchTab(FLIGHTS_TAB)}}>
                     Flights</a>  
-                  <span>&#x2022;</span>
+                  {/* <span>&#x2022;</span>
                   <a className="text-gray-700 hover:text-gray-900"
                     onClick={()=>{switchTab(TRAINS_TABS)}}>
                     Train
                   </a>  
                   <span>&#x2022;</span>
                   <a className="text-gray-700 hover:text-gray-900"
-                    onClick={()=>{switchTab(CRUISE_TAB)}}>Cruise</a>              
+                    onClick={()=>{switchTab(CRUISE_TAB)}}>Cruise</a>               */}
                 </nav>  
               :null}
             <div className={`sticky top-0 flex flex-row ${showNav ? "" : "hidden"}`}>            
