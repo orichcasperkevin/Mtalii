@@ -126,7 +126,7 @@ export default function Home() {
             <Login onLoggedIn={()=>{setShowLogin(false)}}/>
         </Modal>
         <Modal isOpen={showSignUp} onClose={()=>setShowSignup(false)} title="Sign Up">
-          <Signup/>
+          <Signup onSignUp={()=>{setShowSignup(false)}}/>
         </Modal>
       </section>
     </main>
