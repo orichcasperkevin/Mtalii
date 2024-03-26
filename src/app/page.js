@@ -69,9 +69,8 @@ export default function Home() {
                 priority
               />                          
                 <nav className="space-x-4 p-3 ml-3">            
-                  <a className="text-gray-700 font-bold hover:text-gray-900" href="#">Explore Destinations</a>            
-                  <Link className="text-gray-700 hover:text-gray-900" href="/itenary">Itenary</Link>  
-                  <a className="text-gray-700 hover:text-gray-900" href="#">Bookings</a>  
+                  <a className="text-gray-700 font-bold hover:text-gray-900" >Explore Destinations</a>            
+                  <Link className="text-gray-700 hover:text-gray-900" href="/itenary">Itenary</Link>                     
                 </nav>              
             </div>        
             <div className='space-x-4'>
