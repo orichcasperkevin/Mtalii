@@ -71,7 +71,7 @@ const Login = ({onLoggedIn}) => {
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="email"
             type="email"
-            placeholder="kaburu@gmail.com"
+            placeholder="john.doe@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
