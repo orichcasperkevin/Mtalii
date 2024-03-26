@@ -1,112 +1,45 @@
 import { useRouter } from 'next/navigation';
+import { useState,useEffect } from 'react';
 import Image from 'next/image';
+import PlaceholderCard from './placeholderCard';
+const PLACEHOLDERS = 20
 
 export default function Activies(){
-    const router = useRouter();
-    const cardItems = [
-        {
-            id: 1,
-            imageSrc: 'https://picsum.photos/id/59/300/200',       
-            title: 'Mountain pass',
-            channelName: 'awesome cabin within the mountains of south Nairobi',
-            price: '$241 / night',
-        },
-        {
-            id: 2,
-            imageSrc: 'https://picsum.photos/id/60/300/200',        
-            title: 'Forest hill resort',
-            channelName: 'Candid resort in the depths of resjru forest',
-            price: '$230 / night',
-        },
-        {
-            id: 3,
-            imageSrc: 'https://picsum.photos/id/98/300/200',       
-            title: 'City stay',
-            channelName: 'Experience the heartbeat of the city.',
-            price: '$877 / experience',
-        },
-        {
-            id: 4,
-            imageSrc: 'https://picsum.photos/id/90/300/200',        
-            title: 'City by the hiil',
-            channelName: 'Enjoy scenic views in the world famous Loutun city.',
-            price: '$47 ? experience',
-        },
-        {
-          id: 1,
-          imageSrc: 'https://picsum.photos/id/59/300/200',       
-          title: 'Mountain pass 2',
-          channelName: 'awesome cabin within the mountains of south Nairobi',
-          price: '$241 / night',
-      },
-      {
-          id: 2,
-          imageSrc: 'https://picsum.photos/id/60/300/200',        
-          title: 'Forest hill resort new',
-          channelName: 'Candid resort in the depths of resjru forest',
-          price: '$230 / night',
-      },
-      {
-          id: 3,
-          imageSrc: 'https://picsum.photos/id/22/300/200',       
-          title: 'City stay',
-          channelName: 'Experience the heartbeat of the city.',
-          price: '$877 / experience',
-      },
-      {
-          id: 4,
-          imageSrc: 'https://picsum.photos/id/90/300/200',        
-          title: 'City by the hiil',
-          channelName: 'Enjoy scenic views in the world famous Loutun city.',
-          price: '$47 ? experience',
-      },
-      {
-        id: 2,
-        imageSrc: 'https://picsum.photos/id/60/300/200',        
-        title: 'Forest hill resort',
-        channelName: 'Candid resort in the depths of resjru forest',
-        price: '$230 / night',
-    },
-    {
-        id: 3,
-        imageSrc: 'https://picsum.photos/id/22/300/200',       
-        title: 'City stay',
-        channelName: 'Experience the heartbeat of the city.',
-        price: '$877 / experience',
-    },
-    {
-        id: 4,
-        imageSrc: 'https://picsum.photos/id/90/300/200',        
-        title: 'City by the hiil',
-        channelName: 'Enjoy scenic views in the world famous Loutun city.',
-        price: '$47 ? experience',
-    },
-    {
-      id: 1,
-      imageSrc: 'https://picsum.photos/id/59/300/200',       
-      title: 'Mountain pass',
-      channelName: 'awesome cabin within the mountains of south Nairobi',
-      price: '$241 / night',
-    },
-    {
-      id: 2,
-      imageSrc: 'https://picsum.photos/id/60/300/200',        
-      title: 'Forest hill resort',
-      channelName: 'Candid resort in the depths of resjru forest',
-      price: '$230 / night',
-    },
+    const [page,setPage] = useState(1);
+    const [cardItems,setCardItems] = useState(null)
     
-    ];
+    const router = useRouter();
+    const getActivities = async () => {
+        const res = await fetch(`http://5.189.189.26:31517/api/activities?page=${page}`);
+        const accomodations = await res.json();
+        setCardItems(accomodations.results)
+    };
+    const renderPlaceholderCards = () => {
+            const placeholders = [];
+            for (let i = 0; i < PLACEHOLDERS; i++) {
+            placeholders.push(<PlaceholderCard key={i} />);
+        }
+        return placeholders;
+    }
+    useEffect(() => {
+        getActivities();
+    }, []);
+
     return<>
         <div className="grid grid-cols-12 gap-2 gap-y-6 max-w-6xl">
-          {cardItems.map((item) => (
+            {! cardItems ?
+                <>
+                { renderPlaceholderCards() }
+                </>
+            :<>
+            {cardItems.map((item) => (
               <div key={item.id} className="col-span-12 sm:col-span-6 md:col-span-3">
                 <card className="w-full flex flex-col" 
-                  onClick={()=>{router.push(`/listing/${item.title}`)}}>
+                  onClick={()=>{router.push(`/listing/${item.name}`)}}>
                     <div>
                         {/* Image url */}
                         <a href="#">
-                            <Image src={item.imageSrc} className="w-96 bg-gray-200 h-auto rounded-lg" alt="Video thumbnail" width={300} height={200} />
+                            <Image src={`https://picsum.photos/id/${item.id*20}/300/200`} className="w-96 bg-gray-200 h-auto rounded-lg" alt="" width={300} height={200} />
                         </a>                      
                     </div>
                     <div className="flex flex-row mt-2 gap-2">                      
@@ -115,7 +48,7 @@ export default function Activies(){
                         <div className="flex flex-col">
                             <div className='flex flex-row justify-between'>
                               <a href="#" className='flex flex-row justify-between'>
-                                  <p className="text-gray-500 text-sm font-semibold">{item.title}</p>                             
+                                  <p className="text-gray-500 text-sm font-semibold">{item.name}</p>                             
                               </a>
                               <span className='flex flex-row text-sm'>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
@@ -125,14 +58,16 @@ export default function Activies(){
                               </span>
                             </div>                          
                             <a className="text-gray-400 text-xs mt-2 hover:text-gray-100 text-ellipsis overflow-hidden" href="#">
-                                {item.channelName}
+                                {item.description}
                             </a>
                             <p className="text-gray-400 text-xs mt-1">{item.price}</p>
                         </div>
                     </div>
                 </card>
               </div>      
-          ))}
+            ))}
+            </>
+            }
         </div> 
     </>
 }
