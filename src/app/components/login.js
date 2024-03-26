@@ -1,17 +1,68 @@
 import React, { useState } from "react";
+import Spinner from "./spinner";
 
-const Login = () => {
+const Login = ({onLoggedIn}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loggingIn,setLoggingIn] = useState(false)
+  const [errorData,setErrorData] = useState(null)  
+  const [loginSuccesful,setLoginSuccesfull] = useState(false)
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     // Perform login logic here
-    console.log("Logging in with email:", email, "and password:", password);
+    setErrorData(null)    
+    setLoggingIn(true)
+    try {
+      const response = await fetch('http://5.189.189.26:31517/api/auth/login/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 
+          'username':email, 
+          'password': password 
+        })
+      });
+
+      if (response.ok) {
+          // Login successful
+          const data = await response.json();
+          // Do something with the response data, like storing tokens in local storage or state
+          setLoggingIn(false)
+          setLoginSuccesfull(true)
+          console.log('Login successful:', data);
+          setTimeout(()=>{
+            onLoggedIn()
+          },[1300])         
+                  
+      } else {
+          // Login failed
+          const errorData = await response.json();          
+          setErrorData(errorData.non_field_errors[0])
+          setLoggingIn(false)
+          // Handle the error, show error message to the user, etc.
+      }
+    } catch (error) {
+      console.error('Error occurred while logging in:', error);
+      setLoggingIn(false)
+    }
   };
 
   return (
-    <div className="flex flex-col items-center justify-start h-screen ">          
+    <div className="flex flex-col items-center justify-start h-screen transition-all">          
       <div className="bg-white px-8 w-96 mt-8">
+        { errorData ?
+        <div className="px-2 flex justify-center">
+          <small className="text-red-600">Log in failed : {errorData}</small>
+        </div>
+        :null
+         }
+        { loginSuccesful ?
+        <div className="px-2 flex justify-center">
+          <small className="text-green-600">Login successful</small>
+        </div>
+        :null
+         }
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
             Email
@@ -48,9 +99,15 @@ const Login = () => {
             <button
               className="bg-secondary-1 text-white font-bold py-2 px-4 rounded-full focus:outline-none focus:shadow-outline"
               type="button"
-              onClick={handleLogin}
-            >
-              Login
+              onClick={handleLogin}>
+              <span className="flex">
+                <span className="mr-2">Login</span>
+                  {loggingIn ?
+                  <Spinner/>
+                  :
+                  null
+                  }
+              </span>
             </button>
           </div>
         </div>

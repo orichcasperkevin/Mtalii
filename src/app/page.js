@@ -172,7 +172,7 @@ export default function Home() {
       {/* Modal */}
       <section>
         <Modal isOpen={showLogin} onClose={()=>{setShowLogin(false)}} title="Login">
-            <Login/>
+            <Login onLoggedIn={()=>{setShowLogin(false)}}/>
         </Modal>
         <Modal isOpen={showSignUp} onClose={()=>setShowSignup(false)} title="Sign Up">
           <Signup/>
