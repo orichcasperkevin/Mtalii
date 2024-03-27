@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Spinner from "./spinner";
+import Cookies from 'js-cookie';
 
 const Login = ({onLoggedIn}) => {
   const [email, setEmail] = useState("");
@@ -30,7 +31,8 @@ const Login = ({onLoggedIn}) => {
           // Do something with the response data, like storing tokens in local storage or state
           setLoggingIn(false)
           setLoginSuccesfull(true)
-          console.log('Login successful:', data);
+          console.log('Login successful:', data.key);
+          Cookies.set('token', data.key, { httpOnly: true });
           setTimeout(()=>{
             onLoggedIn()
           },[1300])         

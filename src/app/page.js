@@ -1,7 +1,8 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link'
 import Image from "next/image";
+import Cookies from 'js-cookie';
 import ProfileIcon from "./components/profile_icon";
 import Search from "./components/search";
 import MiniSearch from './components/search_minimized';
@@ -53,7 +54,10 @@ export default function Home() {
   const switchTab=(tab)=>{
     setActiveTab(tab)
   }
-
+  useEffect(()=>{
+    const cookieValue = Cookies.get('token');
+    console.log('Cookie Value:', cookieValue);
+  },[])
   return (
     <main>  
       <NavScrollBehavior onShowNav={onShowNav}>   

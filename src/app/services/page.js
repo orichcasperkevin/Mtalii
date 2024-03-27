@@ -1,5 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react';
+import Cookies from 'js-cookie';
 import Link from 'next/link';
 import ProfileIcon from '../components/profile_icon';
 import Accomodations from './accomodation';
@@ -18,7 +19,9 @@ function Nav() {
       setActiveTab(tabName);
     };
 
-    useEffect(()=>{
+    useEffect(()=>{        
+        const cookieValue = Cookies.get('token');
+        console.log('Cookie Value => :', cookieValue);        
         const tab = searchParams.get('tab')        
         switch (tab) {
             case 'transfers':
