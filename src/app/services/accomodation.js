@@ -1,102 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link'
+import PlaceholderCard from '../components/placeholderCard';
 import AccomodationFilters from './components/accomodation_filters';
+const PLACEHOLDERS=20
 
 function Accomodations() {
-  const cardItems = [
-    {
-        id: 1,
-        imageSrc: 'https://picsum.photos/seed/59/300/200',       
-        title: 'Mountain pass',
-        channelName: 'awesome cabin within the mountains of south Nairobi',
-        price: '$241 / night',
-    },
-    {
-        id: 2,
-        imageSrc: 'https://picsum.photos/seed/60/300/200',        
-        title: 'Forest hill resort',
-        channelName: 'Candid resort in the depths of resjru forest',
-        price: '$230 / night',
-    },
-    {
-        id: 3,
-        imageSrc: 'https://picsum.photos/seed/22/300/200',       
-        title: 'City stay',
-        channelName: 'Experience the heartbeat of the city.',
-        price: '$877 / experience',
-    },
-    {
-        id: 4,
-        imageSrc: 'https://picsum.photos/seed/90/300/200',        
-        title: 'City by the hiil',
-        channelName: 'Enjoy scenic views in the world famous Loutun city.',
-        price: '$47 ? experience',
-    },
-    {
-      id: 1,
-      imageSrc: 'https://picsum.photos/seed/59/300/200',       
-      title: 'Mountain pass',
-      channelName: 'awesome cabin within the mountains of south Nairobi',
-      price: '$241 / night',
-  },
-  {
-      id: 2,
-      imageSrc: 'https://picsum.photos/seed/60/300/200',        
-      title: 'Forest hill resort',
-      channelName: 'Candid resort in the depths of resjru forest',
-      price: '$230 / night',
-  },
-  {
-      id: 3,
-      imageSrc: 'https://picsum.photos/seed/22/300/200',       
-      title: 'City stay',
-      channelName: 'Experience the heartbeat of the city.',
-      price: '$877 / experience',
-  },
-  {
-      id: 4,
-      imageSrc: 'https://picsum.photos/seed/90/300/200',        
-      title: 'City by the hiil',
-      channelName: 'Enjoy scenic views in the world famous Loutun city.',
-      price: '$47 ? experience',
-  },
-  {
-    id: 2,
-    imageSrc: 'https://picsum.photos/seed/60/300/200',        
-    title: 'Forest hill resort',
-    channelName: 'Candid resort in the depths of resjru forest',
-    price: '$230 / night',
-},
-{
-    id: 3,
-    imageSrc: 'https://picsum.photos/seed/22/300/200',       
-    title: 'City stay',
-    channelName: 'Experience the heartbeat of the city.',
-    price: '$877 / experience',
-},
-{
-    id: 4,
-    imageSrc: 'https://picsum.photos/seed/90/300/200',        
-    title: 'City by the hiil',
-    channelName: 'Enjoy scenic views in the world famous Loutun city.',
-    price: '$47 ? experience',
-},
-{
-  id: 1,
-  imageSrc: 'https://picsum.photos/seed/59/300/200',       
-  title: 'Mountain pass',
-  channelName: 'awesome cabin within the mountains of south Nairobi',
-  price: '$241 / night',
-},
-{
-  id: 2,
-  imageSrc: 'https://picsum.photos/seed/60/300/200',        
-  title: 'Forest hill resort',
-  channelName: 'Candid resort in the depths of resjru forest',
-  price: '$230 / night',
-},
+  const [cardItems,setCardItems] = useState(null);
+  const [page,setPage] = useState(1);
+  
+  const getAccomodations = async () => {
+    const res = await fetch(`http://5.189.189.26:31517/api/destinations?page=${page}`);
+    const accomodations = await res.json();
+    setCardItems(accomodations.results)
+  };
 
-  ];
+  const renderPlaceholderCards = () => {
+      const placeholders = [];
+    for (let i = 0; i < PLACEHOLDERS; i++) {
+      placeholders.push(<PlaceholderCard key={i} />);
+    }
+  return placeholders;
+  }
+
+  useEffect(()=>{
+    getAccomodations()
+  },[])
   return (
     <div>
         <div className='p-3 flex justify-end'>
@@ -107,6 +35,11 @@ function Accomodations() {
         <AccomodationFilters/>        
         <section className="mt-3 flex flex-row justify-center">
         <div className="grid grid-cols-12 gap-2 gap-y-6 max-w-6xl">
+          {! cardItems ?
+              <>
+              { renderPlaceholderCards() }
+              </>
+          :<>
           {cardItems.map((item) => (
               <div key={item.id} className="col-span-12 sm:col-span-6 md:col-span-3">
                 <card className="w-full flex flex-col">
@@ -140,6 +73,8 @@ function Accomodations() {
                 </card>
               </div>      
           ))}
+          </>
+          }
         </div>     
         </section>
     </div>
