@@ -1,32 +1,29 @@
 import React from 'react';
 import Link from 'next/link';
 import AccomodationFilters from './components/accomodation_filters';
+import PlaceholderCard from '../components/placeholderCard';
+const PLACEHOLDERS = 20
+
 
 function Activities() {
-  const cardItems = [
-    {
-      id: 3,
-      imageSrc: 'https://picsum.photos/seed/22/300/200',       
-      title: 'City stay',
-      channelName: 'Experience the heartbeat of the city.',
-      price: '$877 / experience',
-    },
-    {
-        id: 2,
-        imageSrc: 'https://picsum.photos/seed/60/300/200',        
-        title: 'Forest hill resort',
-        channelName: 'Candid resort in the depths of resjru forest',
-        price: '$230 / night',
-    },
-    {
-      id: 1,
-      imageSrc: 'https://picsum.photos/seed/59/300/200',       
-      title: 'Mountain pass',
-      channelName: 'awesome cabin within the mountains of south Nairobi',
-      price: '$241 / night',
-    },
-
-  ]
+  const [page,setPage] = useState(1);
+  const [cardItems,setCardItems] = useState(null)
+  const getAccomodations = async () => {
+    const res = await fetch(`http://5.189.189.26:31517/api/destinations?page=${page}`);
+    const accomodations = await res.json();
+    setCardItems(accomodations.results)
+  };
+    // Render placeholder cards
+  const renderPlaceholderCards = () => {
+      const placeholders = [];
+      for (let i = 0; i < PLACEHOLDERS; i++) {
+      placeholders.push(<PlaceholderCard key={i} />);
+  }
+  return placeholders;
+  }
+  useEffect(() => {
+      getAccomodations()
+    }, []);
   return (
     <div>
         <div className='p-3 flex justify-end'>
@@ -35,6 +32,11 @@ function Activities() {
         <AccomodationFilters/>        
         <section className="mt-3 flex flex-row justify-center">
         <div className="grid grid-cols-12 gap-2 gap-y-6 max-w-6xl">
+        {! cardItems ?
+          <>
+              { renderPlaceholderCards() }
+              </>
+          :<>
           {cardItems.map((item) => (
               <div key={item.id} className="col-span-12 sm:col-span-6 md:col-span-3">
                 <card className="w-full flex flex-col">
@@ -68,6 +70,8 @@ function Activities() {
                 </card>
               </div>      
           ))}
+          </>
+        }
         </div>     
         </section>
     </div>
