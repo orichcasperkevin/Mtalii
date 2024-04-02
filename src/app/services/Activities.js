@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import Link from 'next/link';
 import AccomodationFilters from './components/accomodation_filters';
 import PlaceholderCard from '../components/placeholderCard';
