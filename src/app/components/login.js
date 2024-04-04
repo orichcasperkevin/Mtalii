@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Link from "next/link";
 import Spinner from "./spinner";
 import Cookies from 'js-cookie';
 
@@ -70,7 +71,7 @@ const Login = ({onLoggedIn}) => {
             Email
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="email"
             type="email"
             placeholder="john.doe@example.com"
@@ -83,7 +84,7 @@ const Login = ({onLoggedIn}) => {
             Password
           </label>
           <input
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="password"
             type="password"
             placeholder="**********"
@@ -93,9 +94,7 @@ const Login = ({onLoggedIn}) => {
         </div>
         <div className="flex items-center justify-between">
           <div className="text-sm">
-            <a className="text-blue-500 hover:text-blue-700" href="#">
-              Forgot password?
-            </a>
+            <Link className="text-blue-500 hover:text-blue-700" href="/password-reset">Forgot password ?</Link>
           </div>
           <div>
             <button
