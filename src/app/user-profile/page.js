@@ -5,17 +5,24 @@ import Image from "next/image";
 import Cookies from 'js-cookie';
 import ProfileIcon from '../components/profile_icon';
 import NavScrollBehavior from '../components/nav_scroll_behavior';
-
-
+import { useRouter } from 'next/navigation';
 
 export default function Home() {  
+  const router = useRouter()
+  const onShowLogin=()=>{
+    router.push("/login")
+  }
+  const onShowSignup=()=>{
+    router.push("/signup")
+  }
   useEffect(()=>{
     const token = Cookies.get('token');
-    console.log('Cookie Value:', cookieValue);
+    console.log('Cookie Value:', token);
+
   },[])
   return (
     <main>  
-      <NavScrollBehavior onShowNav={onShowNav}>   
+      <NavScrollBehavior onShowNav={()=>{;}}>   
         <div className='bg-white'>
           <div className="p-3 flex justify-between bg-gray-200">
             {/* Logo */}
@@ -26,11 +33,7 @@ export default function Home() {
                 width={50}
                 height={50}
                 priority
-              />                          
-                <nav className="space-x-4 p-3 ml-3">            
-                  <a className="text-gray-700 font-bold hover:text-gray-900" >Explore Destinations</a>            
-                  <Link className="text-gray-700 hover:text-gray-900" href="/itenary">Itenary</Link>                     
-                </nav>              
+              />                                                     
             </div>        
             <div className='space-x-4'>
               <Link href="/services" className="text-gray-600">Switch to services</Link>
