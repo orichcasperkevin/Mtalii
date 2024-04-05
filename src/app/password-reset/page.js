@@ -10,8 +10,8 @@ function PasswordReset() {
     const [sendingEmail,setSendingEmail] = useState(false);
     const [successMessage,setSuccessMessage] = useState(null);
     const [errorData,setErrorData] = useState(null);
-    const [showEmailForm,setShowEmailForm] = useState(true)
-    const [showNewPasswordForm, setShowNewPasswordForm] = useState(false)
+    const [showEmailForm,setShowEmailForm] = useState(true);
+    const [showNewPasswordForm, setShowNewPasswordForm] = useState(false);
     const router = useRouter();
     const searchParams = useSearchParams()  
     const goBack = () => {

@@ -4,6 +4,8 @@ import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image'
+import Link from 'next/link'
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
@@ -69,58 +71,18 @@ const ProfileIcon=({
                 </a>
               )}
             </Menu.Item> 
-            <hr></hr>
+            <hr></hr>        
             <Menu.Item>
               {({ active }) => (
-                <a
-                  href="#"
-                  className={classNames(
-                    active ? 'bg-accent-1 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm'
-                  )}
-                >
-                  Messages
-                </a>
-              )}
-            </Menu.Item>           
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href="#"
-                  className={classNames(
-                    active ? 'bg-accent-1 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm'
-                  )}
-                >
-                  Notifications
-                </a>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href="#"
-                  className={classNames(
-                    active ? 'bg-accent-1 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm'
-                  )}
-                >
-                  Booking history
-                </a>
-              )}
-            </Menu.Item>
-            <hr></hr>
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href="#"
+                <Link
+                  href="user-profile"
                   className={classNames(
                     active ? 'bg-accent-1 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm'
                   )}
                 >
                   Account
-                </a>
+                </Link>
               )}
             </Menu.Item>
             <Menu.Item>
@@ -136,20 +98,7 @@ const ProfileIcon=({
                 </a>
               )}
             </Menu.Item>
-            <hr></hr>
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href="#"
-                  className={classNames(
-                    active ? 'bg-accent-1 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm'
-                  )}
-                >
-                  Help center
-                </a>
-              )}
-            </Menu.Item>          
+            <hr></hr>         
             <form method="POST" action="#">
               <Menu.Item>
                 {({ active }) => (
