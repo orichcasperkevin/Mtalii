@@ -9,7 +9,7 @@ function Activities() {
   const [page,setPage] = useState(1);
   const [cardItems,setCardItems] = useState(null)
   const getAccomodations = async () => {
-    const res = await fetch(`http://5.189.189.26:31517/api/destinations?page=${page}`);
+    const res = await fetch(`https://api.ziarra.world/api/destinations?page=${page}`);
     const accomodations = await res.json();
     setCardItems(accomodations.results)
   };

@@ -15,6 +15,43 @@ export default function Home() {
   const onShowSignup=()=>{
     router.push("/signup")
   }
+  const getUserProfile= async ()=>{
+    try {
+      const response = await fetch('https://api.ziarra.world/api/auth/login/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 
+          'username':email, 
+          'password': password 
+        })
+      });
+
+      if (response.ok) {
+          // Login successful
+          const data = await response.json();
+          // Do something with the response data, like storing tokens in local storage or state
+          setLoggingIn(false)
+          setLoginSuccesfull(true)
+          console.log('Login successful:', data.key);
+          Cookies.set('token', data.key, { httpOnly: true });
+          setTimeout(()=>{
+            onLoggedIn()
+          },[1300])         
+                  
+      } else {
+          // Login failed
+          const errorData = await response.json();          
+          setErrorData(errorData.non_field_errors[0])
+          setLoggingIn(false)
+          // Handle the error, show error message to the user, etc.
+      }
+    } catch (error) {
+      console.error('Error occurred while logging in:', error);
+      setLoggingIn(false)
+    }
+  }
   useEffect(()=>{
     const token = Cookies.get('token');
     console.log('Cookie Value:', token);

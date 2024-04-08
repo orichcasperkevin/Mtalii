@@ -14,7 +14,7 @@ const Signup = ({onSignUp}) => {
       setErrorData(null)    
       setSigningUp(true)
       try {
-        const response = await fetch('http://5.189.189.26:31517/api/register/', {
+        const response = await fetch('https://api.ziarra.world/api/register/', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

@@ -17,7 +17,7 @@ function NewPassword() {
             return
         }
         try {
-            const response = await fetch('http://5.189.189.26:31517/api/auth/reset/confirm/', {
+            const response = await fetch('https://api.ziarra.world/api/auth/reset/confirm/', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'

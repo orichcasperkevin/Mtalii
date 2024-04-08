@@ -21,7 +21,7 @@ function PasswordReset() {
     const sendVerificationEmail= async ()=>{
         setSendingEmail(true);
         try {
-            const response = await fetch('http://5.189.189.26:31517/api/auth/password/reset/', {
+            const response = await fetch('https://api.ziarra.world/api/auth/password/reset/', {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'

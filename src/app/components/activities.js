@@ -10,7 +10,7 @@ export default function Activies(){
     
     const router = useRouter();
     const getActivities = async () => {
-        const res = await fetch(`http://5.189.189.26:31517/api/activities?page=${page}`);
+        const res = await fetch(`https://api.ziarra.world/api/activities?page=${page}`);
         const accomodations = await res.json();
         setCardItems(accomodations.results)
     };
